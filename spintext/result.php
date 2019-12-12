@@ -1,3 +1,15 @@
+<?php 
+	$speed = isset($_GET["speed"]) ? strval($_GET["speed"] / 10) . "s" : "1s";
+	$speed_half = isset($_GET["speed"]) ? strval(($_GET["speed"] / 2) / 10) . "s" : "0.5s";
+	
+	if ($speed > 5 || $speed <= 1){
+		$speed = "2s";
+		$speed_half = "1s";
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -30,7 +42,7 @@
 					font-family: sans-serif;
 					text-align: center;
 				
-					animation: text-animation 2s infinite linear, text-animation-color 1s alternate infinite linear, depth 2s infinite linear;
+					animation: text-animation <?php echo $speed ?> infinite linear, text-animation-color <?php echo $speed_half; ?> alternate infinite linear, depth <?php echo $speed ?> infinite linear;
 
 		</style>
 		
@@ -38,7 +50,7 @@
 
 	<body>
 			
-		<p id="text"><?php echo strlen(trim($_GET["input"])) ? htmlspecialchars($_GET["input"]) : "which way am i spinning?"; ?></p>
+		<p id="text"><?php echo strlen(trim($_GET["text"])) ? htmlspecialchars($_GET["text"]) : "which way am i spinning?"; ?></p>
 		
 	</body>
 	

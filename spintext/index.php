@@ -14,12 +14,12 @@
 				width: 250px;
 				height: 100px;
 				font-size: 40pt;
+				
 				}
 
 			#button {
 				width: 100px;
 				height: 50px;
-				margin-top: 25px;
 				
 				}
 				
@@ -31,13 +31,29 @@
 		
 		<form action="result.php" method="GET">
 			
-			<input id="textbox" name="input" type="text"/>
+			<input type="text" id="textbox" name="text"/>
+			
+			<br>
+			
+			<input type="range" min="10" max="50" value="10" name="speed" onchange="update(this.value)">
+			
+			<p id="speedtext"></p>
 			
 			<br>
 			
 			<input id="button" type="submit"/>
 			
+			
 		</form>
+		
+		<script>
+			var speedtext = document.getElementById("speedtext");
+			
+			function update(value){
+					speedtext.innerText = "speed: " + (value / 10) + "s";
+				}
+			
+		</script>
 		
 	</body>
 </html>
